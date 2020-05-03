@@ -931,7 +931,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1446439479547996}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.008333333, y: 0, z: -0.04}
+  m_LocalPosition: {x: 0.008333333, y: -0.002, z: -0.04}
   m_LocalScale: {x: 0.049999997, y: 1, z: 0.049999997}
   m_Children:
   - {fileID: 4812272546655696}
@@ -1038,7 +1038,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1064457361224104}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.04}
+  m_LocalPosition: {x: 0, y: -0.002, z: -0.04}
   m_LocalScale: {x: 0.05, y: 1, z: 0.05}
   m_Children:
   - {fileID: 4688230054451050}
@@ -1066,7 +1066,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1712871810612940}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.04}
+  m_LocalPosition: {x: 0, y: -0.002, z: -0.04}
   m_LocalScale: {x: 0.05, y: 1, z: 0.05}
   m_Children:
   - {fileID: 4738652928699800}
@@ -1081,7 +1081,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1626767741268814}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.008333333, y: 0, z: -0.04}
+  m_LocalPosition: {x: 0.008333333, y: -0.002, z: -0.04}
   m_LocalScale: {x: 0.049999997, y: 1, z: 0.049999997}
   m_Children:
   - {fileID: 4449482288305162}
@@ -1357,7 +1357,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1093152315879492}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.025, y: 0, z: -0.04}
+  m_LocalPosition: {x: 0.025, y: -0.002, z: -0.04}
   m_LocalScale: {x: 0.049999997, y: 1, z: 0.049999997}
   m_Children:
   - {fileID: 4024511923954382}
@@ -1372,7 +1372,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1486898674219638}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01666666, y: 0, z: -0.04}
+  m_LocalPosition: {x: 0.01666666, y: -0.002, z: -0.04}
   m_LocalScale: {x: 0.049999997, y: 1, z: 0.049999997}
   m_Children:
   - {fileID: 4620885166308874}
@@ -1413,7 +1413,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1662231511234994}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.025, y: 0, z: -0.04}
+  m_LocalPosition: {x: 0.025, y: -0.002, z: -0.04}
   m_LocalScale: {x: 0.049999997, y: 1, z: 0.049999997}
   m_Children:
   - {fileID: 4431076657468876}
@@ -1467,7 +1467,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1739310954979098}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01666666, y: 0, z: -0.04}
+  m_LocalPosition: {x: 0.01666666, y: -0.002, z: -0.04}
   m_LocalScale: {x: 0.049999997, y: 1, z: 0.049999997}
   m_Children:
   - {fileID: 4286456340948608}
@@ -2659,7 +2659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - KT/Transparent/Mobile Diffuse Underlay200
+  - KT/Mobile/DiffuseTint
 --- !u!114 &114063860585799518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2949,7 +2949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - KT/Transparent/Mobile Diffuse Underlay200
+  - KT/Mobile/DiffuseTint
 --- !u!114 &114333256639586228
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3305,7 +3305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - KT/Transparent/Mobile Diffuse Underlay200
+  - KT/Mobile/DiffuseTint
 --- !u!114 &114818480767018130
 MonoBehaviour:
   m_ObjectHideFlags: 1
