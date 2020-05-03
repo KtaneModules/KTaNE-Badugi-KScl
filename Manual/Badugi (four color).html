@@ -60,16 +60,16 @@
         <script>
             var adjacent = [[0, 9], [1, 9], [1, 0], [1, 1], [0, 1], [9, 1], [9, 0], [9, 9]];
             var fallback = [
-                "8♦", "3♦", "5♦", "4♠", "9♠", "7♠", "5♣", "7♦", "2♥", "2♠",
-                "5♠", "9♣", "8♣", "6♥", "6♦", "2♣", "J♣", "J♠", "Q♣", "5♣",
-                "6♣", "7♣", "2♦", "J♥", "A♠", "2♥", "6♥", "3♣", "A♦", "K♥",
-                "9♠", "Q♦", "A♣", "7♥", "6♠", "3♠", "9♦", "5♠", "5♦", "8♥",
-                "6♠", "9♥", "9♦", "6♦", "3♦", "A♥", "J♥", "2♣", "4♦", "4♥",
-                "7♣", "J♠", "10♠", "8♠", "2♦", "4♣", "Q♠", "K♠", "K♣", "4♣",
-                "2♠", "5♥", "3♥", "10♦", "9♥", "J♦", "6♣", "8♠", "9♣", "A♠",
-                "10♥", "J♣", "4♠", "Q♣", "5♥", "Q♥", "3♠", "K♦", "3♣", "Q♠",
-                "8♥", "A♣", "A♥", "4♦", "10♣", "A♦", "8♣", "8♦", "7♥", "3♥",
-                "10♣", "10♦", "7♦", "10♥", "J♦", "10♠", "4♥", "Q♦", "Q♥", "7♠"
+                "8\u2666", "3\u2666", "5\u2666", "4\u2660", "9\u2660", "7\u2660", "5\u2663", "7\u2666", "2\u2665", "2\u2660",
+                "5\u2660", "9\u2663", "8\u2663", "6\u2665", "6\u2666", "2\u2663", "J\u2663", "J\u2660", "Q\u2663", "5\u2663",
+                "6\u2663", "7\u2663", "2\u2666", "J\u2665", "A\u2660", "2\u2665", "6\u2665", "3\u2663", "A\u2666", "K\u2665",
+                "9\u2660", "Q\u2666", "A\u2663", "7\u2665", "6\u2660", "3\u2660", "9\u2666", "5\u2660", "5\u2666", "8\u2665",
+                "6\u2660", "9\u2665", "9\u2666", "6\u2666", "3\u2666", "A\u2665", "J\u2665", "2\u2663", "4\u2666", "4\u2665",
+                "7\u2663", "J\u2660", "10\u2660", "8\u2660", "2\u2666", "4\u2663", "Q\u2660", "K\u2660", "K\u2663", "4\u2663",
+                "2\u2660", "5\u2665", "3\u2665", "10\u2666", "9\u2665", "J\u2666", "6\u2663", "8\u2660", "9\u2663", "A\u2660",
+                "10\u2665", "J\u2663", "4\u2660", "Q\u2663", "5\u2665", "Q\u2665", "3\u2660", "K\u2666", "3\u2663", "Q\u2660",
+                "8\u2665", "A\u2663", "A\u2665", "4\u2666", "10\u2663", "A\u2666", "8\u2663", "8\u2666", "7\u2665", "3\u2665",
+                "10\u2663", "10\u2666", "7\u2666", "10\u2665", "J\u2666", "10\u2660", "4\u2665", "Q\u2666", "Q\u2665", "7\u2660"
             ];
             var test;
 
@@ -122,10 +122,10 @@
             function setRules(rng) {
                 var table1st = [];
                 var cards2place = [
-                    "8♣", "7♣", "6♣", "5♣", "4♣", "3♣", "2♣", "A♣", 
-                    "8♠", "7♠", "6♠", "5♠", "4♠", "3♠", "2♠", "A♠", 
-                    "8♥", "7♥", "6♥", "5♥", "4♥", "3♥", "2♥", "A♥",
-                    "8♦", "7♦", "6♦", "5♦", "4♦", "3♦", "2♦", "A♦"
+                    "8\u2663", "7\u2663", "6\u2663", "5\u2663", "4\u2663", "3\u2663", "2\u2663", "A\u2663", 
+                    "8\u2660", "7\u2660", "6\u2660", "5\u2660", "4\u2660", "3\u2660", "2\u2660", "A\u2660", 
+                    "8\u2665", "7\u2665", "6\u2665", "5\u2665", "4\u2665", "3\u2665", "2\u2665", "A\u2665",
+                    "8\u2666", "7\u2666", "6\u2666", "5\u2666", "4\u2666", "3\u2666", "2\u2666", "A\u2666"
                 ];
                 var locations = [...Array(100).keys()];
                 PlaceCardsUntilEmpty(rng, table1st, cards2place, locations);
@@ -137,10 +137,10 @@
                 for (; retries < 10; ++retries)
                 {
                     cards2place = [
-                        "Q♣", "Q♠", "Q♥", "Q♦",
-                        "J♣", "J♠", "J♥", "J♦",
-                        "10♣", "10♠", "10♥", "10♦",
-                        "9♣", "9♠", "9♥", "9♦"
+                        "Q\u2663", "Q\u2660", "Q\u2665", "Q\u2666",
+                        "J\u2663", "J\u2660", "J\u2665", "J\u2666",
+                        "10\u2663", "10\u2660", "10\u2665", "10\u2666",
+                        "9\u2663", "9\u2660", "9\u2665", "9\u2666"
                     ];
                     rng.shuffleFisherYates(cards2place);
                     if (PlaceCardsUntilEmpty(rng, table2nd, cards2place, locations))
@@ -154,7 +154,7 @@
                     table2nd = [...fallback];
                 else
                 {
-                    cards2place = ["K♣", "K♠", "K♥", "K♦",]
+                    cards2place = ["K\u2663", "K\u2660", "K\u2665", "K\u2666",]
                     rng.shuffleFisherYates(cards2place);
                     for (var i = 0; i < 4; ++i)
                         table2nd[locations[i]] = cards2place[i];                    
@@ -165,11 +165,11 @@
                     for (var x = 0; x < 10; ++x, ++i) {
                         var cell = row.getElementsByTagName('td')[x];
                         var cname = 'spade';
-                        if (table2nd[i].includes('♥') )
+                        if (table2nd[i].includes('\u2665') )
                             cname = 'heart';
-                        else if (table2nd[i].includes('♦'))
+                        else if (table2nd[i].includes('\u2666'))
                             cname = 'diamond';
-                        else if (table2nd[i].includes('♣'))
+                        else if (table2nd[i].includes('\u2663'))
                             cname = 'club';
                         cell.innerHTML = `<span class='cell-contents ${cname}'>${table2nd[i]}</span>`;
                     }
@@ -191,7 +191,8 @@
 
                     <ul>
                         <li>Eight cards will be dealt out onto the surface of this module, split up into two groups of four card hands. The first two cards of each hand will be shown, with the other two remaining hidden.</li>
-                        <li>Using the table below, find a line created by the first two cards in each hand, horizontally, vertically, or diagonally, wrapping around as necessary. The next two cards in that line are the two hidden cards in that hand.</li>
+                        <li>Find the locations of the two given cards in the table below. (There are two copies of each card except Kings in the table.)</li>
+                        <lI>The two given cards will form exactly one line of adjacent cards, horizontally, vertically, or diagonally, wrapping around as necessary. The next two cards in that line are the two hidden cards in that hand.</li>
                         <li>Compare the two hands by the rules of Badugi, and place a chip on (select) the betting line next to the stronger of the two hands. If the two hands tie, either one of them may be picked.</li>
                         <li>The module will disarm after three correct choices have been made. Choosing a losing hand will result in a strike and new hands being drawn, but will not reset the number of correct choices thus far.</li>
                     </ul>
@@ -247,9 +248,9 @@
 
                     <p>Any Badugi beats any three-card hand regardless of the contents of either hand. Likewise, any three-card hand beats any two-card hand, and any two-card hand beats any single card. If both hands have the same number of valid cards, then the highest ranked cards are compared in each hand—treating Aces as the lowest rank—and the hand with the lower high card is the winner. If both hands have the same high card, the second-highest card is compared, followed by the third and fourth if necessary. If the ranks of all contributing cards are identical, the hands tie; no suit trumps any other.</p>
 
-                    <p>Cards that did not contribute to the hand are <strong>never</strong> considered when comparing hands. The hands <span class="club">J♣</span> <span class="heart">7♥</span> <span class="spade">7♠</span> <span class="diamond">2♦</span> and <span class="heart">K♥</span> <span class="diamond">J♦</span> <span class="club">7♣</span> <span class="heart">2♥</span> tie with each other; in the former hand one of the two sevens does not contribute because they share ranks with each other, and in the latter hand the King does not contribute due to sharing a suit with the deuce. Therefore, both hands are Jack-low three card hands (Jack, Seven, Deuce).</p>
+                    <p>Cards that did not contribute to the hand are <strong>never</strong> considered when comparing hands. The hands <span class="club">J&#9827;</span> <span class="heart">7&#9829;</span> <span class="spade">7&#9824;</span> <span class="diamond">2&#9830;</span> and <span class="heart">K&#9829;</span> <span class="diamond">J&#9830;</span> <span class="club">7&#9827;</span> <span class="heart">2&#9829;</span> tie with each other; in the former hand one of the two sevens does not contribute because they share ranks with each other, and in the latter hand the King does not contribute due to sharing a suit with the deuce. Therefore, both hands are Jack-low three card hands (Jack, Seven, Deuce).</p>
 
-                    <p>The best possible hand is a four-low Badugi; <span class="club">A♣</span> <span class="heart">2♥</span> <span class="spade">3♠</span> <span class="diamond">4♦</span>, or any other combination of those ranks as long as every suit differs. The worst possible hand is a single King, <span class="club">K♣</span> <span class="heart">K♥</span> <span class="spade">K♠</span> <span class="diamond">K♦</span>.</p>
+                    <p>The best possible hand is a four-low Badugi; <span class="club">A&#9827;</span> <span class="heart">2&#9829;</span> <span class="spade">3&#9824;</span> <span class="diamond">4&#9830;</span>, or any other combination of those ranks as long as every suit differs. The worst possible hand is a single King, <span class="club">K&#9827;</span> <span class="heart">K&#9829;</span> <span class="spade">K&#9824;</span> <span class="diamond">K&#9830;</span>.</p>
                 </div>
                 <div class="page-footer relative-footer">Page 2 of 2</div>
             </div>
