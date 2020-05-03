@@ -151,15 +151,14 @@
                 }
 
                 if (retries >= 10)
+                    table2nd = [...fallback];
+                else
                 {
-                    cardTable = [...fallback];
-                    return;
+                    cards2place = ["K♣", "K♠", "K♥", "K♦",]
+                    rng.shuffleFisherYates(cards2place);
+                    for (var i = 0; i < 4; ++i)
+                        table2nd[locations[i]] = cards2place[i];                    
                 }
-
-                cards2place = ["K♣", "K♠", "K♥", "K♦",]
-                rng.shuffleFisherYates(cards2place);
-                for (var i = 0; i < 4; ++i)
-                    table2nd[locations[i]] = cards2place[i];
 
                 for (var y = 0, i = 0; y < 10; ++y) {
                     var row = document.getElementsByClassName('ruleset-table')[y];

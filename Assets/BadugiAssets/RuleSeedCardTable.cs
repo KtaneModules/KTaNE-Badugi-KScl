@@ -52,7 +52,6 @@ class RuleSeedCardTable {
 			y = mainLoc / 10;
 			cardTable[x, y] = card;
 			locationsOpen.Remove(mainLoc);
-			//Debug.LogFormat("{0} -> {1}, {2}", card, x, y);
 
 			// Check all spaces adjacent to the first card. If they're occupied,
 			// keep track of them for later.
@@ -69,7 +68,6 @@ class RuleSeedCardTable {
 			restrictedOpen = locationsOpen.ToList();
 
 			retryAuxCard:
-			//Debug.LogFormat("attempt: remaining {0}", restrictedOpen.Count);
 			if (restrictedOpen.Count == 0)
 				return false; // failure
 
@@ -77,7 +75,6 @@ class RuleSeedCardTable {
 			restrictedOpen.Remove(auxLoc);
 			aux_x = auxLoc % 10;
 			aux_y = auxLoc / 10;
-			//Debug.LogFormat("{0} -> {1}, {2}?", card, aux_x, aux_y);
 
 			// If we're trying to place the second card extremely close to the first, reject immediately.
 			if ((Math.Abs(aux_x - x) <= 2 || Math.Abs(aux_x - x) >= 8) && (Math.Abs(aux_y - y) <= 2 || Math.Abs(aux_y - y) >= 8))
@@ -99,7 +96,6 @@ class RuleSeedCardTable {
 			// Location is good, move on
 			cardTable[aux_x, aux_y] = card;
 			locationsOpen.Remove(auxLoc);
-			//Debug.LogFormat("{0} -> {1}, {2}", card, aux_x, aux_y);
 		}
 		return true; // success
 	}
@@ -160,17 +156,6 @@ class RuleSeedCardTable {
 		seededRNG.ShuffleFisherYates(cardsToPlace);
 		for (int i = 0; i < 4; ++i)
 			cardTable[locationsOpen[i] % 10, locationsOpen[i] / 10] = cardsToPlace[i];
-
-/*		string a = "";
-		for (int y = 0; y < 10; ++y)
-		{
-			for (int x = 0; x < 10; ++x)
-			{
-				a += (cardTable[x, y] + " ");
-			}
-			Debug.LogFormat("{0}", a);
-			a = "";
-		} */
 	}
 
 	public enum TableReadDirection {

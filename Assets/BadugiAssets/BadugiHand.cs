@@ -192,9 +192,4 @@ class BadugiHand
 			frontFace.sortingOrder = -4 + i;
 		}
 	}
-
-	public int clength()
-	{
-		return internalRanking.Count();
-	}
 }

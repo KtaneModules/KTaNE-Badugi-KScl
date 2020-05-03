@@ -151,8 +151,9 @@ public class Badugi : MonoBehaviour
 			rightHand.SetFrontFaces(cardsRight, frontInUse, cardsRevealed ? null : hiddenFrontTexture);
 	}
 
+
 	// -----
-	// The Dirty Work™
+	// Hand mechanics
 	// -----
 
 	BadugiHand GetRandomHand()
@@ -161,17 +162,6 @@ public class Badugi : MonoBehaviour
 		int rnY = RNG.Range(0, 10);
 		int rnD = RNG.Range(0, 8);
 		return new BadugiHand(tableLayout.GetLine(rnX, rnY, (RuleSeedCardTable.TableReadDirection)rnD));
-	}
-
-	bool OnSelect(int side)
-	{
-		if (!readyForInput || moduleSolved)
-			return false;
-
-		chipAnims[numCorrect].Play((side > 0) ? "Bet Right" : "Bet Left");
-		bombAudio.PlaySoundAtTransform("ChipPlace", gameObject.transform);
-		StartCoroutine(RevealHands(side));
-		return false;
 	}
 
 	IEnumerator RevealHands(int side)
@@ -266,6 +256,22 @@ public class Badugi : MonoBehaviour
 		yield break;
 	}
 
+
+	// -----
+	// The Dirty Work™
+	// -----
+
+	bool OnSelect(int side)
+	{
+		if (!readyForInput || moduleSolved)
+			return false;
+
+		chipAnims[numCorrect].Play((side > 0) ? "Bet Right" : "Bet Left");
+		bombAudio.PlaySoundAtTransform("ChipPlace", gameObject.transform);
+		StartCoroutine(RevealHands(side));
+		return false;
+	}
+
 	void Awake()
 	{
 		thisLogID = ++globalLogID;
@@ -274,39 +280,6 @@ public class Badugi : MonoBehaviour
 		MonoRandom seededRNG = bombRuleSeed.GetRNG();
 		Debug.LogFormat("[Badugi #{0}] Using rule seed: {1}", thisLogID, seededRNG.Seed);
 		tableLayout = new RuleSeedCardTable(seededRNG);
-
-		string testStr;
-		int[] lens = new int[5];
-		Dictionary<string, bool> seenBefore = new Dictionary<string, bool>();
-		List<string> line;
-		for (int y = 0; y < 10; ++y)
-			for (int x = 0; x < 10; ++x)
-				for (int i = 0; i < 8; ++i)
-				{
-					line = tableLayout.GetLine(x, y, (RuleSeedCardTable.TableReadDirection)i);
-					testStr = String.Format("{0} {1}", line[0], line[1]);
-					try {
-						seenBefore.Add(testStr, true);						
-					}
-					catch (ArgumentException)
-					{
-						Debug.LogFormat("[Badugi #{0}] Card sequence {1} is duplicated.", thisLogID, testStr);
-					}
-
-					if (line[0] == line[3])
-					{
-						Debug.LogFormat("[Badugi #{0}] Card sequence {1} contains the same card multiple times.", thisLogID, testStr);
-					}
-					BadugiHand nh = new BadugiHand(line);
-					nh.AnalyzeHand();
-					++lens[nh.clength()];
-				}
-		if (seenBefore.Count == 800)
-			Debug.LogFormat("[Badugi #{0}] No conflicts.", thisLogID);
-		Debug.LogFormat("[Badugi #{0}] Badugis: {1}.", thisLogID, lens[4]);
-		Debug.LogFormat("[Badugi #{0}] Threes: {1}.", thisLogID, lens[3]);
-		Debug.LogFormat("[Badugi #{0}] Twos: {1}.", thisLogID, lens[2]);
-		Debug.LogFormat("[Badugi #{0}] Singles: {1}.", thisLogID, lens[1]);
 
 		// What cards would we like? Purely visual, no gameplay effects.
 		SetRandomBacking();
@@ -378,16 +351,24 @@ public class Badugi : MonoBehaviour
 			yield break;
 		}
 	}
-/*
-	void TwitchHandleForcedSolve()
+
+	public IEnumerator TwitchHandleForcedSolve()
 	{
 		if (moduleSolved)
-			return;
+			yield break;
 
-		Debug.LogFormat("[Rainbow Arrows #{0}] SOLVE: Force solve requested by Twitch Plays.", thisLogID);
-		moduleSolved = true;
-		if (currentCoroutine != null)
-			StopCoroutine(currentCoroutine);
-		currentCoroutine = StartCoroutine(SolveAnimation());
-	} */
+		Debug.LogFormat("[Badugi #{0}] Force solve requested by Twitch Plays.", thisLogID);
+
+		while (numCorrect < 3)
+		{
+			int previousCorrect = numCorrect;
+
+			while (!readyForInput)
+				yield return true;
+			((leftHand.CompareHands(rightHand) >= 0) ? selectLeft : selectRight).OnInteract();
+			yield return new WaitForSeconds(0.1f);
+			while (numCorrect == previousCorrect)
+				yield return true;
+		}
+	}
 }
