@@ -318,7 +318,7 @@ public class Badugi : MonoBehaviour
 				yield break;
 			}
 
-			int side = (mt.Groups[1].ToString()[0] == 'l') ? -1 : 1;
+			int side = (mt.Groups[1].ToString().ToLower()[0] == 'l') ? -1 : 1;
 			int result = rightHand.CompareHands(leftHand);
 
 			yield return null;
